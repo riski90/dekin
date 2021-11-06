@@ -1,10 +1,8 @@
-version: 2.1
-orbs:
-  win: circleci/windows@2.3.0
-
 jobs:
   build:
-    executor: win/gpu-nvidia
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+    resource_class: large
     steps:
-      - checkout
-      - run: '&"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe"'
+      -run:lscpu
+ 
