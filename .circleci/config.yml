@@ -1,8 +1,19 @@
+version: 2.1
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/base:stable
+      
 jobs:
-  build:
-    machine:
-      image: ubuntu-2004:202010-01 # recommended linux image
-    resource_class: large
+  my-job-name:
+
+    executor: my-custom-executor
     steps:
-      -run:lscpu
- 
+      - checkout
+      - run: |
+          # echo Hello, World!
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - my-job-name
